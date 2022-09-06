@@ -19,16 +19,19 @@ public class EventService {
 		return repository.save(event);
 	}
 
-	public List<Event> listAllEvents() {
+	public List<Event> listAllEvents()
+	{
 		return repository.findAll();
 	}
 
-	public ResponseEntity<Event> findEventById(int id) {
+	public ResponseEntity<Event> findEventById(int id)
+	{
 		return repository.findById(id).map(event -> ResponseEntity.ok().body(event))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	public ResponseEntity<Event> updateEventById(Event event, int id) {
+	public ResponseEntity<Event> updateEventById(Event event, int id)
+	{
 		return repository.findById(id).map(eventToUpdate -> {
 			eventToUpdate.setName(event.getName());
 			eventToUpdate.setDate(event.getDate());
@@ -38,7 +41,8 @@ public class EventService {
 		}).orElse(ResponseEntity.notFound().build());
 	}
 
-	public ResponseEntity<Object> deleteById(int id) {
+	public ResponseEntity<Object> deleteById(int id)
+	{
 		return repository.findById(id).map(taskToDelete -> {
 			repository.deleteById(id);
 			return ResponseEntity.noContent().build();

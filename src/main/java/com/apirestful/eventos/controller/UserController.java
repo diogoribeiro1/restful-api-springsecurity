@@ -30,7 +30,8 @@ public class UserController {
 
     //     CRIANDO USER COM ROLE('ADMIN')
     @PostMapping( "/createAdmin")
-    public User saveAdmin(@RequestBody User user) {
+    public User saveAdmin(@RequestBody User user)
+    {
         User userModel = userService.execute(user);
         CreateUserRoleDTO dto = new CreateUserRoleDTO();
         dto.setIdUser(userModel.getUserId());
@@ -44,7 +45,8 @@ public class UserController {
 
     //     CRIANDO USER COM ROLE('USER')
     @PostMapping( "/createUSER")
-    public User saveUser(@RequestBody User user) {
+    public User saveUser(@RequestBody User user)
+    {
         User userModel = userService.execute(user);
         CreateUserRoleDTO dto = new CreateUserRoleDTO();
         dto.setIdUser(userModel.getUserId());
@@ -58,7 +60,8 @@ public class UserController {
 
     // ADCIONA ROLE EM USER
     @PostMapping(value = "/role")
-    public User role(@RequestBody CreateUserRoleDTO createUserRoleDTO) {
+    public User role(@RequestBody CreateUserRoleDTO createUserRoleDTO)
+    {
         return roleService.execute(createUserRoleDTO);
     }
 }
